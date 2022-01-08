@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domestika course</title>
+  </head>
+  <body>
+    <canvas width="600" height="600" />
+  </body>
+  <script type="text/javascript">
+    const canvas = document.querySelector("canvas");
+    const context = canvas.getContext("2d");
+
+    const drawBasicShapes = () => {
+      // Blue rect, shorthand
+      context.fillStyle = "blue";
+      context.fillRect(100, 100, 400, 400);
+
+      // Basic stroked rect
+      context.beginPath();
+      context.rect(200, 200, 200, 200);
+      context.lineWidth = 4;
+      context.stroke();
+
+      // Basic circle
+      context.beginPath();
+      context.arc(300, 300, 50, 0, Math.PI * 2); // In radians
+      context.lineWidth = 2;
+      context.stroke();
+    };
+    // drawBasicShapes();
+
+    const drawRandomGrid = () => {
+      // Loops
+      const width = 40;
+      const height = width;
+      const gap = 20;
+      const columns = 5;
+      const rows = columns;
+
+      for (let i = 0; i < columns; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = 100 + (width + gap) * i;
+          const y = 100 + (height + gap) * j;
+
+          // Rectangle
+          context.beginPath();
+          context.rect(x, y, width, height);
+          context.stroke();
+
+          // Randomly decide whether to draw circles or not
+          if (Math.random() > 0.5) {
+            context.beginPath();
+            context.arc(
+              x + height / 2,
+              y + height / 2,
+              width / 2,
+              0,
+              Math.PI * 2
+            );
+            context.fill();
+          }
+        }
+      }
+    };
+    // drawRandomGrid();
+  </script>
+</html>
