@@ -19,7 +19,7 @@ const sketch = () => {
     const w = width * 0.01;
     const h = height * 0.01;
 
-    const n = 24;
+    const n = 320;
     const radius = width * 0.5;
     const slice = math.degToRad(360 / n);
 
@@ -48,9 +48,13 @@ const sketch = () => {
       const minR = radius * 0.1;
       context.lineWidth = random.range(width * 0.01, minR / n);
 
-      context.beginPath();
-      // Equally distribute radius in last quarter
+      const rgbR = random.range(0, 255);
+      const rgbG = random.range(0, 255);
+      const rgbB = random.range(0, 255);
 
+      context.strokeStyle = `rgba(${rgbR}, ${rgbG}, ${rgbB})`;
+
+      context.beginPath();
       const r = ((radius - minR) / n) * i + minR;
       context.arc(0, 0, r, 0, math.degToRad(random.range(180, 359)));
       context.stroke();
