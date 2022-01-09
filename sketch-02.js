@@ -19,7 +19,7 @@ const sketch = () => {
     const w = width * 0.01;
     const h = height * 0.01;
 
-    const n = 320;
+    const n = 18;
     const radius = width * 0.5;
     const slice = math.degToRad(360 / n);
 
@@ -56,7 +56,8 @@ const sketch = () => {
 
       context.beginPath();
       const r = ((radius - minR) / n) * i + minR;
-      context.arc(0, 0, r, 0, math.degToRad(random.range(180, 359)));
+      const start = random.range(-360, 360); // Anywhere on the circle
+      context.arc(0, 0, r, start, math.degToRad(random.range(0, 10)));
       context.stroke();
 
       context.restore();
